@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Already Gone · Revolut Virtual Single-Use Cards · Bhanu Kumar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,700;1,300&family=Lora:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --black:   #090909;
+  --bg:      #111111;
+  --bg2:     #181818;
+  --bg3:     #1e1e1e;
+  --border:  rgba(255,255,255,0.08);
+  --border-md: rgba(255,255,255,0.14);
+  --white:   #f4f2ec;
+  --dim:     #888580;
+  --faint:   #3d3b38;
+  --blue:    #1b1fff;
+  --blue-d:  rgba(27,31,255,0.13);
+  --blue-glow: rgba(27,31,255,0.25);
+  --accent:  #c8ff00;
+  --acc-d:   rgba(200,255,0,0.12);
+  --radius:  10px;
+  --radius-lg: 16px;
+  --radius-xl: 22px;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--black);
+  color: var(--white);
+  font-family: 'Poppins', system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* ============================================================
+   NAV
+============================================================ */
+.site-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(9,9,9,0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 5vw;
+}
+
+.nav-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 56px;
+  gap: 16px;
+}
+
+.nav-logo {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 0.01em;
+  color: var(--white);
+  white-space: nowrap;
+}
+.nav-logo span { color: var(--blue); }
+
+.nav-links {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+.nav-pill {
+  font-size: 12px;
+  font-weight: 500;
+  padding: 6px 14px;
+  border-radius: 100px;
+  border: 1px solid var(--border);
+  color: var(--dim);
+  background: transparent;
+  text-decoration: none;
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+.nav-pill:hover { border-color: var(--border-md); color: var(--white); }
+.nav-pill.cta {
+  background: var(--blue);
+  border-color: var(--blue);
+  color: #fff;
+}
+.nav-pill.cta:hover { opacity: 0.85; }
+
+/* ============================================================
+   LAYOUT
+============================================================ */
+.wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 5vw;
+}
+
+section {
+  padding: 80px 0;
+  border-bottom: 1px solid var(--border);
+}
+section:last-child { border-bottom: none; }
+
+/* ============================================================
+   SECTION LABEL
+============================================================ */
+.sec-label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 32px;
+}
+.sec-num {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  color: #7b7eff;
+  background: var(--blue-d);
+  border: 1px solid rgba(27,31,255,0.22);
+  padding: 3px 12px;
+  border-radius: 100px;
+  white-space: nowrap;
+}
+.sec-title {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--faint);
+}
+
+/* ============================================================
+   COVER SECTION
+============================================================ */
+#cover {
+  padding: 100px 0 80px;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+}
+
+#cover::before {
+  content: '';
+  position: absolute;
+  top: -120px; right: -80px;
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, var(--blue-glow) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+.cover-eyebrow {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--faint);
+  margin-bottom: 28px;
+}
+
+.cover-title {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: clamp(72px, 14vw, 156px);
+  line-height: 0.86;
+  letter-spacing: -0.025em;
+  color: var(--white);
+  margin-bottom: 32px;
+}
+.cover-title .ghost {
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255,255,255,0.18);
+}
+.cover-title .blue { color: var(--blue); }
+
+.cover-sub {
+  font-family: 'Lora', Georgia, serif;
+  font-style: italic;
+  font-size: clamp(16px, 2.2vw, 22px);
+  color: var(--dim);
+  line-height: 1.6;
+  max-width: 600px;
+  margin-bottom: 36px;
+  font-weight: 400;
+}
+
+.tagline-pill {
+  display: inline-block;
+  background: var(--accent);
+  color: #080808;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: clamp(15px, 2.5vw, 22px);
+  letter-spacing: 0.12em;
+  padding: 12px 28px;
+  border-radius: 6px;
+  margin-bottom: 60px;
+}
+
+.cover-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding-top: 32px;
+  border-top: 1px solid var(--border);
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.cover-info { font-size: 14px; color: var(--dim); line-height: 1.8; }
+.cover-info strong { display: block; font-size: 16px; color: var(--white); font-weight: 500; margin-bottom: 2px; }
+
+.cover-toc { display: flex; flex-direction: column; align-items: flex-end; gap: 2px; }
+.toc-item {
+  font-size: 12px;
+  color: var(--faint);
+  line-height: 2;
+  padding-right: 14px;
+  border-right: 2px solid var(--blue);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+.toc-item:hover { color: var(--dim); }
+
+/* ============================================================
+   STRATEGY — P2
+============================================================ */
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.s-card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+}
+.s-card.insight { border-left: 3px solid var(--blue); }
+.s-card.pos     { border-left: 3px solid var(--accent); }
+
+.s-card-label {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--faint);
+  margin-bottom: 16px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--border);
+}
+.s-card-head {
+  font-family: 'Lora', Georgia, serif;
+  font-style: italic;
+  font-size: clamp(17px, 2vw, 22px);
+  color: var(--white);
+  line-height: 1.35;
+  margin-bottom: 16px;
+}
+.s-card-body {
+  font-size: 15px;
+  color: var(--dim);
+  line-height: 1.78;
+  font-weight: 300;
+}
+.s-card-body strong { color: var(--white); font-weight: 500; }
+.s-card-body em     { color: var(--white); font-style: italic; }
+
+.vp-card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+}
+.vp-card-head {
+  font-family: 'Lora', Georgia, serif;
+  font-style: italic;
+  font-size: clamp(17px, 2vw, 21px);
+  color: var(--white);
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+}
+.vp-card-label {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--faint);
+  margin-bottom: 14px;
+}
+
+.vp-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+.vp-item {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+}
+.vp-num {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 32px;
+  color: var(--blue);
+  opacity: 0.4;
+  line-height: 1;
+  margin-bottom: 10px;
+}
+.vp-head { font-size: 14px; font-weight: 500; color: var(--white); margin-bottom: 8px; line-height: 1.3; }
+.vp-body { font-size: 13px; color: var(--dim); line-height: 1.7; font-weight: 300; }
+
+/* ============================================================
+   BIG IDEA — P3
+============================================================ */
+.idea-hero {
+  background: var(--blue);
+  border-radius: var(--radius-xl);
+  padding: clamp(36px, 6vw, 60px) clamp(32px, 6vw, 56px);
+  margin-bottom: 12px;
+  position: relative;
+  overflow: hidden;
+}
+.idea-hero::before {
+  content: '';
+  position: absolute;
+  top: -60px; right: -60px;
+  width: 320px; height: 320px;
+  background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+.idea-label {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.38);
+  margin-bottom: 20px;
+}
+.idea-concept {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: clamp(56px, 11vw, 120px);
+  line-height: 0.88;
+  letter-spacing: -0.025em;
+  color: #fff;
+  margin-bottom: 24px;
+  position: relative;
+  z-index: 1;
+}
+.idea-concept em { color: var(--accent); font-style: normal; }
+
+.idea-desc {
+  font-family: 'Lora', Georgia, serif;
+  font-style: italic;
+  font-size: clamp(15px, 2vw, 20px);
+  color: rgba(255,255,255,0.72);
+  line-height: 1.55;
+  max-width: 580px;
+  margin-bottom: 28px;
+  position: relative;
+  z-index: 1;
+}
+.tagline-box {
+  display: inline-block;
+  background: var(--accent);
+  color: #080808;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: clamp(14px, 2vw, 19px);
+  letter-spacing: 0.12em;
+  padding: 10px 22px;
+  border-radius: 5px;
+  position: relative;
+  z-index: 1;
+}
+
+.rat-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+.r-card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+}
+.r-arrow { font-size: 18px; color: var(--blue); margin-bottom: 12px; }
+.r-title { font-size: 15px; font-weight: 500; color: var(--white); margin-bottom: 10px; line-height: 1.3; }
+.r-body  { font-size: 14px; color: var(--dim); line-height: 1.75; font-weight: 300; }
+.r-body strong { color: var(--white); font-weight: 500; }
+
+/* ============================================================
+   MOODBOARD — P4
+============================================================ */
+.mood-title {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: clamp(28px, 4vw, 42px);
+  letter-spacing: -0.01em;
+  color: var(--white);
+  margin-bottom: 10px;
+}
+.mood-desc {
+  font-size: 15px;
+  color: var(--dim);
+  font-weight: 300;
+  line-height: 1.75;
+  max-width: 720px;
+  margin-bottom: 28px;
+}
+.mood-desc em { color: var(--white); }
+
+.mood-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  grid-template-rows: 200px 200px;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.mood-tile {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.mood-t1 {
+  grid-row: 1 / 3;
+  background: #000;
+  border: 1px solid var(--border);
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px;
+}
+.card-viz {
+  width: 180px;
+  height: 110px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #1b1fff 0%, #0b0bc4 100%);
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 0 32px rgba(27,31,255,0.35);
+}
+.cv-label { font-size: 8px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.4); }
+.cv-num   { font-size: 13px; font-weight: 500; letter-spacing: 0.2em; color: rgba(255,255,255,0.7); }
+.cv-bot   { display: flex; justify-content: space-between; align-items: flex-end; }
+.cv-exp   { font-size: 8px; color: rgba(255,255,255,0.38); }
+.cv-brand { font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 12px; color: rgba(255,255,255,0.55); }
+
+.card-redact {
+  width: 180px;
+  border-radius: 10px;
+  background: #050505;
+  border: 1px solid rgba(255,255,255,0.06);
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.rb { height: 10px; border-radius: 3px; background: rgba(255,255,255,0.06); }
+.rb.blue { background: rgba(27,31,255,0.4); width: 68%; }
+.rb.sm   { width: 42%; }
+.rb.med  { width: 63%; }
+.rb.lg   { width: 88%; }
+.t1-cap {
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--faint);
+  text-align: center;
+}
+
+.mood-t2 { background: var(--blue); }
+.type-spec { text-align: center; padding: 20px; }
+.type-spec .sm-lbl { font-size: 9px; color: rgba(255,255,255,0.38); letter-spacing: 0.14em; text-transform: uppercase; display: block; margin-bottom: 10px; }
+.type-spec .big { font-family: 'Poppins', sans-serif; font-weight: 700; font-size: clamp(28px, 4vw, 44px); line-height: 0.95; color: rgba(255,255,255,0.92); letter-spacing: -0.01em; }
+
+.mood-t3 { background: var(--accent); }
+.acc-type { font-family: 'Poppins', sans-serif; font-weight: 700; font-size: clamp(22px, 3vw, 34px); letter-spacing: 0.06em; color: #080808; text-align: center; line-height: 1.1; }
+
+.mood-t4 { background: #0f0f0f; border: 1px solid var(--border); flex-direction: column; align-items: flex-start; padding: 20px; justify-content: flex-end; gap: 10px; }
+.pal-row { display: flex; align-items: center; gap: 10px; width: 100%; }
+.pal-sw  { width: 24px; height: 24px; border-radius: 5px; flex-shrink: 0; }
+.pal-nm  { font-size: 11px; font-weight: 500; color: var(--dim); }
+
+.mood-t5 { background: #0a0a0a; border: 1px solid var(--border); flex-direction: column; gap: 8px; padding: 20px; }
+.serif-sp { text-align: center; }
+.serif-sp p { font-family: 'Lora', Georgia, serif; font-style: italic; font-size: 16px; color: var(--white); line-height: 1.4; margin-bottom: 8px; }
+.serif-sp span { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--faint); }
+
+.ds-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+.ds-item {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px;
+}
+.ds-lbl   { font-size: 10px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--faint); margin-bottom: 8px; }
+.ds-title { font-size: 14px; font-weight: 500; color: var(--white); margin-bottom: 6px; }
+.ds-body  { font-size: 12px; color: var(--dim); font-weight: 300; line-height: 1.6; }
+
+/* ============================================================
+   MOCK PROPOSALS — P5
+============================================================ */
+.mocks-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.mock-card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  padding: 28px;
+}
+.mock-tag {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: 100px;
+  margin-bottom: 16px;
+}
+.mock-tag.ip  { background: var(--blue-d); color: #7b7eff; border: 1px solid rgba(27,31,255,0.22); }
+.mock-tag.ooh { background: var(--acc-d); color: #7a9900; border: 1px solid rgba(200,255,0,0.22); }
+.mock-head {
+  font-family: 'Lora', Georgia, serif;
+  font-size: clamp(17px, 2vw, 21px);
+  color: var(--white);
+  margin-bottom: 14px;
+  line-height: 1.3;
+}
+.mock-body { font-size: 14px; color: var(--dim); font-weight: 300; line-height: 1.75; margin-bottom: 20px; }
+.mock-body strong { color: var(--white); font-weight: 500; }
+.mock-body em { color: var(--white); }
+
+/* Phone mockup */
+.phone-row { display: flex; gap: 16px; align-items: flex-start; }
+.phone {
+  width: 110px;
+  flex-shrink: 0;
+  background: #0a0a0a;
+  border: 1px solid rgba(255,255,255,0.14);
+  border-radius: 18px;
+  overflow: hidden;
+}
+.ph-notch { width: 50px; height: 10px; background: #000; border-radius: 0 0 8px 8px; margin: 0 auto; }
+.ph-screen { padding: 8px; }
+.ph-topbar { display: flex; justify-content: space-between; margin-bottom: 6px; }
+.ph-topbar span { font-size: 7px; color: var(--dim); }
+.ph-card { background: linear-gradient(135deg, #1b1fff 0%, #0c0ccc 100%); border-radius: 7px; padding: 8px; margin-bottom: 6px; }
+.ph-cl   { font-size: 6px; letter-spacing: 0.1em; color: rgba(255,255,255,0.42); margin-bottom: 5px; display: block; }
+.ph-cn   { font-size: 7px; letter-spacing: 0.14em; color: rgba(255,255,255,0.7); margin-bottom: 4px; display: block; }
+.ph-cb   { display: flex; justify-content: space-between; }
+.ph-cb .cl { font-size: 6px; color: rgba(255,255,255,0.38); }
+.ph-cb .cr { font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 7px; color: rgba(255,255,255,0.58); }
+.ph-st { background: rgba(200,255,0,0.1); border: 1px solid rgba(200,255,0,0.25); border-radius: 5px; padding: 4px 6px; margin-bottom: 6px; display: flex; align-items: center; gap: 5px; }
+.ph-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
+.ph-stxt { font-size: 6px; color: var(--accent); font-weight: 500; }
+.ph-stats { display: flex; gap: 4px; margin-bottom: 6px; }
+.ph-stat { flex: 1; background: rgba(255,255,255,0.04); border-radius: 4px; padding: 5px; text-align: center; }
+.ph-sv { font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 13px; color: var(--white); line-height: 1; display: block; }
+.ph-sl { font-size: 6px; color: var(--dim); display: block; }
+.ph-cta { background: var(--blue); border-radius: 5px; padding: 6px; text-align: center; font-size: 7px; font-weight: 500; color: #fff; }
+
+.ph-notes { flex: 1; display: flex; flex-direction: column; gap: 8px; }
+.copy-strip { background: var(--bg2); border-left: 3px solid var(--blue); border-radius: 0 6px 6px 0; padding: 12px 14px; }
+.copy-strip p { font-family: 'Lora', Georgia, serif; font-style: italic; font-size: 13px; color: var(--white); line-height: 1.5; margin-bottom: 5px; }
+.copy-strip span { font-size: 11px; color: var(--faint); }
+.copy-strip.green { border-left-color: var(--accent); }
+
+.billboard {
+  background: #000;
+  border-radius: var(--radius-lg);
+  padding: 22px 24px;
+  border: 1px solid rgba(255,255,255,0.06);
+  margin-bottom: 10px;
+}
+.bb-top { font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.18); margin-bottom: 10px; }
+.bb-main { font-family: 'Poppins', sans-serif; font-weight: 700; font-size: clamp(28px, 4vw, 44px); line-height: 0.88; color: #fff; letter-spacing: -0.02em; margin-bottom: 10px; }
+.bb-main em { color: var(--blue); font-style: normal; }
+.bb-sub { font-size: 9px; color: rgba(255,255,255,0.32); letter-spacing: 0.1em; text-transform: uppercase; }
+
+.phase-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.pm-item { background: var(--bg2); border: 1px solid var(--border); border-radius: 8px; padding: 14px; }
+.pm-n { font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 22px; color: var(--blue); opacity: 0.35; line-height: 1; margin-bottom: 5px; }
+.pm-t { font-size: 12px; font-weight: 500; color: var(--white); margin-bottom: 5px; }
+.pm-b { font-size: 11px; color: var(--dim); font-weight: 300; line-height: 1.6; }
+
+/* ============================================================
+   SIGNATURE
+============================================================ */
+.sig {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 24px;
+  padding: 60px 0 80px;
+}
+.sig-name {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: clamp(22px, 3vw, 32px);
+  color: var(--white);
+  margin-bottom: 8px;
+}
+.sig-name span { color: var(--blue); }
+.sig-details { font-size: 14px; color: var(--dim); line-height: 1.9; }
+.sig-details a { color: var(--dim); text-decoration: none; transition: color 0.15s; }
+.sig-details a:hover { color: var(--white); }
+.sig-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--blue);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 500;
+  padding: 14px 28px;
+  border-radius: 100px;
+  text-decoration: none;
+  transition: opacity 0.15s;
+  font-family: 'Poppins', sans-serif;
+}
+.sig-btn:hover { opacity: 0.85; }
+
+/* ============================================================
+   RESPONSIVE
+============================================================ */
+@media (max-width: 900px) {
+  .two-col    { grid-template-columns: 1fr; }
+  .vp-grid    { grid-template-columns: 1fr; }
+  .rat-grid   { grid-template-columns: 1fr; }
+  .mocks-grid { grid-template-columns: 1fr; }
+  .ds-grid    { grid-template-columns: 1fr 1fr; }
+
+  .mood-grid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+  }
+  .mood-t1 {
+    grid-column: 1 / -1;
+    grid-row: auto;
+    height: 220px;
+  }
+}
+
+@media (max-width: 600px) {
+  section { padding: 56px 0; }
+  #cover   { padding: 64px 0 56px; }
+
+  .nav-links { display: none; }
+
+  .cover-footer { flex-direction: column; align-items: flex-start; }
+  .cover-toc    { align-items: flex-start; }
+  .toc-item     { padding-right: 0; padding-left: 14px; border-right: none; border-left: 2px solid var(--blue); }
+
+  .mood-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
+  .mood-t1 { height: 240px; }
+  .ds-grid { grid-template-columns: 1fr; }
+
+  .phone-row { flex-direction: column; }
+  .phone     { width: 100%; max-width: 200px; }
+  .phase-grid { grid-template-columns: 1fr; }
+
+  .sig { flex-direction: column; align-items: flex-start; }
+}
+
+@media (min-width: 1400px) {
+  .wrap { max-width: 1200px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="site-nav">
+  <div class="nav-inner">
+    <div class="nav-logo">Bhanu <span>Kumar</span></div>
+    <div class="nav-links">
+      <a class="nav-pill" href="#strategy">Strategy</a>
+      <a class="nav-pill" href="#idea">Big Idea</a>
+      <a class="nav-pill" href="#moodboard">Art Direction</a>
+      <a class="nav-pill" href="#mocks">Mocks</a>
+      <a class="nav-pill cta" href="mailto:bhanukumar0902@gmail.com">Get in touch</a>
+    </div>
+  </div>
+</nav>
+
+<!-- COVER -->
+<section id="cover">
+  <div class="wrap">
+    <div class="cover-eyebrow">Virtual Single-Use Cards &nbsp;&middot;&nbsp; Campaign Creative Platform</div>
+    <div class="cover-title">
+      ALREADY<br>
+      <span class="ghost">GONE</span><span class="blue">.</span>
+    </div>
+    <div class="cover-sub">A creative platform for launching Revolut&rsquo;s Virtual Single-Use Cards, built on the one truth every competitor is too cautious to say out loud.</div>
+    <div class="tagline-pill">SPENT. GONE. SAFE.</div>
+
+    <div class="cover-footer">
+      <div class="cover-info">
+        <strong>Bhanu Kumar</strong>
+        bhanukumar0902@gmail.com &nbsp;&middot;&nbsp; linkedin.com/in/bhanuexcalibur<br>
+        PMM &mdash; Loyalty &middot; Revolut &middot; Home Task &middot; April 2026
+      </div>
+      <div class="cover-toc">
+        <a class="toc-item" href="#strategy">P1 &mdash; Strategy</a>
+        <a class="toc-item" href="#idea">P2 &mdash; Big Idea</a>
+        <a class="toc-item" href="#moodboard">P3 &mdash; Art Direction</a>
+        <a class="toc-item" href="#mocks">P4 &mdash; Mock Proposals</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STRATEGY -->
+<section id="strategy">
+  <div class="wrap">
+    <div class="sec-label">
+      <div class="sec-num">Part 01</div>
+      <div class="sec-title">Define the strategy</div>
+    </div>
+
+    <div class="two-col">
+      <div class="s-card insight">
+        <div class="s-card-label">Audience Insight</div>
+        <div class="s-card-head">They don&rsquo;t fear fraud. They fear the threat they can&rsquo;t see coming.</div>
+        <div class="s-card-body">
+          Revolut&rsquo;s existing customers, digitally-native 25&ndash;38 year olds, are not naive. They&rsquo;ve read the breach headlines. What they carry is a specific, low-grade dread: <em>&ldquo;the card number I gave that website two years ago is sitting in some database somewhere. I have no idea what&rsquo;s going to happen with it.&rdquo;</em>
+          <br><br>
+          That&rsquo;s not fear of a visible threat. It&rsquo;s <strong>anxiety about lost control</strong>, the paranoia of invisible exposure. Competitors have been selling reassurance for 20 years. Revolut&rsquo;s audience doesn&rsquo;t want reassurance. They want proof there is nothing left to steal.
+        </div>
+      </div>
+
+      <div class="s-card pos">
+        <div class="s-card-label">Positioning Statement</div>
+        <div class="s-card-head">The only card that destroys itself before anyone else can.</div>
+        <div class="s-card-body">
+          Every other card protects you <em>after</em> something goes wrong. Revolut&rsquo;s Virtual Single-Use Card makes the threat irrelevant <strong>before it begins</strong>.
+          <br><br>
+          Framed as security, we are one of many. Framed as <strong>control</strong>, we stand alone. Security implies a threat that needs managing. Control implies a decision you already made. No credit card, challenger bank, or traditional issuer can hold this ground. It is available. We should take it.
+        </div>
+      </div>
+    </div>
+
+    <div class="vp-card">
+      <div class="vp-card-label">Core Value Proposition</div>
+      <div class="vp-card-head">Every card number you&rsquo;ve ever shared is still out there. This one won&rsquo;t be.</div>
+      <div class="vp-grid">
+        <div class="vp-item">
+          <div class="vp-num">01</div>
+          <div class="vp-head">One use. Then it&rsquo;s gone.</div>
+          <div class="vp-body">After a single transaction the number ceases to exist. Merchants can&rsquo;t re-charge. Hackers can&rsquo;t exploit it. Databases have nothing to store. Nothing left to steal, because it is simply no longer there.</div>
+        </div>
+        <div class="vp-item">
+          <div class="vp-num">02</div>
+          <div class="vp-head">Already on every plan. Free.</div>
+          <div class="vp-body">No new account, no application, no credit check. Any Revolut user creates a card in seconds at no cost. The barrier to the first use is near zero, which means the brief is a marketing problem, not a product problem.</div>
+        </div>
+        <div class="vp-item">
+          <div class="vp-num">03</div>
+          <div class="vp-head">Makes permanent card numbers feel reckless.</div>
+          <div class="vp-body">Amex, Visa, Mastercard all require a number that lives forever. Once you use a card that disappears, handing a permanent number to a merchant starts to feel like an oversight.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BIG IDEA -->
+<section id="idea">
+  <div class="wrap">
+    <div class="sec-label">
+      <div class="sec-num">Part 02</div>
+      <div class="sec-title">Pitch the idea</div>
+    </div>
+
+    <div class="idea-hero">
+      <div class="idea-label">The Big Idea &mdash; Creative Concept</div>
+      <div class="idea-concept"><em>Already</em><br>Gone.</div>
+      <div class="idea-desc">The moment you pay, the card is already gone. Not stolen. Not compromised. Gone, by design, before anyone could even try.</div>
+      <div class="tagline-box">SPENT. GONE. SAFE.</div>
+    </div>
+
+    <div class="sec-label" style="margin-top: 40px;">
+      <div class="sec-num">The thinking</div>
+      <div class="sec-title">How the decisions got made</div>
+    </div>
+
+    <div class="rat-grid">
+      <div class="r-card">
+        <div class="r-arrow">&rarr;</div>
+        <div class="r-title">Where the idea came from</div>
+        <div class="r-body">The audience is anxious about exposure they cannot see or control. So the concept removes the thing worth stealing. Not a promise of protection: a product that makes protection irrelevant. When there is no number left, there is no attack surface. Only Revolut can make that argument.</div>
+      </div>
+      <div class="r-card">
+        <div class="r-arrow">&rarr;</div>
+        <div class="r-title">Why it looks the way it looks</div>
+        <div class="r-body">Every competitor in this space reaches for shields and padlocks. The brief called this out directly. So the visual language does the opposite: built on <strong>absence</strong>. Dark fields. Redacted numbers. Things that are not there. The card&rsquo;s disappearance is the product and the proof. Nothing in fintech has used absence as the hero visual before.</div>
+      </div>
+      <div class="r-card">
+        <div class="r-arrow">&rarr;</div>
+        <div class="r-title">Why the tagline is three words</div>
+        <div class="r-body">Spent. Gone. Safe. It&rsquo;s a sequence: the action, the result, the outcome. The rhythm mirrors the speed of the transaction. It works on a billboard, in a push notification, in a social caption, and as a spoken line. Shortening it loses the sequence. Lengthening it loses the punch. Three was the only answer.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MOODBOARD -->
+<section id="moodboard">
+  <div class="wrap">
+    <div class="sec-label">
+      <div class="sec-num">Part 03 &middot; A</div>
+      <div class="sec-title">Visual moodboard &mdash; campaign look and feel</div>
+    </div>
+
+    <div class="mood-title">Controlled Absence</div>
+    <div class="mood-desc">The visual language is built on what is <em>not there</em>. Dark fields. Card numbers that dissolve, redact, and cease to exist. Revolut Blue as the only warmth in a void. Acid Green (#C8FF00) appears only at the moment of confirmation: the card is used and the number is already gone. The emptiness is the proof.</div>
+
+    <div class="mood-grid">
+      <div class="mood-tile mood-t1">
+        <div class="card-viz">
+          <div class="cv-label">Single-use &middot; Active</div>
+          <div class="cv-num">4532 &bull;&bull;&bull;&bull; &bull;&bull;&bull;&bull; &bull;&bull;&bull;&bull;</div>
+          <div class="cv-bot">
+            <span class="cv-exp">EXP 04/26</span>
+            <span class="cv-brand">REVOLUT</span>
+          </div>
+        </div>
+        <div class="card-redact">
+          <span class="rb blue"></span>
+          <span class="rb lg"></span>
+          <span class="rb med"></span>
+          <span class="rb sm"></span>
+        </div>
+        <span class="t1-cap">Before &middot; After &mdash; The disappearance is the feature</span>
+      </div>
+
+      <div class="mood-tile mood-t2">
+        <div class="type-spec">
+          <span class="sm-lbl">Poppins Bold &mdash; Display</span>
+          <div class="big">ALREADY<br>GONE.</div>
+        </div>
+      </div>
+
+      <div class="mood-tile mood-t3">
+        <div class="acc-type">SPENT.<br>GONE.<br>SAFE.</div>
+      </div>
+
+      <div class="mood-tile mood-t4">
+        <div class="pal-row"><div class="pal-sw" style="background:#1b1fff;"></div><div class="pal-nm">Revolut Blue &mdash; #1B1FFF</div></div>
+        <div class="pal-row"><div class="pal-sw" style="background:#c8ff00;"></div><div class="pal-nm">Gone Green &mdash; #C8FF00</div></div>
+        <div class="pal-row"><div class="pal-sw" style="background:#f4f2ec;"></div><div class="pal-nm">Off-White &mdash; #F4F2EC</div></div>
+        <div class="pal-row"><div class="pal-sw" style="background:#090909; border:1px solid rgba(255,255,255,0.15);"></div><div class="pal-nm">Void Black &mdash; #090909</div></div>
+      </div>
+
+      <div class="mood-tile mood-t5">
+        <div class="serif-sp">
+          <p>&ldquo;Gone before they<br>even knew it<br>existed.&rdquo;</p>
+          <span>Body &mdash; Lora Italic</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="ds-grid">
+      <div class="ds-item">
+        <div class="ds-lbl">Display Typeface</div>
+        <div class="ds-title">Poppins Bold</div>
+        <div class="ds-body">Heavy, unapologetic. A card that announces itself before vanishing</div>
+      </div>
+      <div class="ds-item">
+        <div class="ds-lbl">Narrative Voice</div>
+        <div class="ds-title">Lora Italic</div>
+        <div class="ds-body">Human warmth in the void, for the &ldquo;why this matters&rdquo; layer of copy</div>
+      </div>
+      <div class="ds-item">
+        <div class="ds-lbl">Motion Principle</div>
+        <div class="ds-title">Dissolve, not Explosion</div>
+        <div class="ds-body">The card doesn&rsquo;t shatter. It simply ceases to exist. Quiet, deliberate, reassuring</div>
+      </div>
+      <div class="ds-item">
+        <div class="ds-lbl">Photo Direction</div>
+        <div class="ds-title">Zero Lifestyle Shots</div>
+        <div class="ds-body">No smiling people at laptops. Only redacted numbers, terminal screens, and negative space</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MOCK PROPOSALS -->
+<section id="mocks">
+  <div class="wrap">
+    <div class="sec-label">
+      <div class="sec-num">Part 03 &middot; B</div>
+      <div class="sec-title">Two mock proposals</div>
+    </div>
+
+    <div class="mocks-grid">
+
+      <div class="mock-card">
+        <div class="mock-tag ip">Mock 01 &middot; In-Product Moment</div>
+        <div class="mock-head">The card confirms it&rsquo;s gone before the receipt loads</div>
+        <div class="mock-body">
+          When a single-use card transaction clears, the app shows <strong>the card number redacting itself</strong>, one group at a time, with a one-line confirmation. The product already destroys the card invisibly. Making the destruction visible turns a routine moment into a satisfying proof of control and creates a habit loop that drives repeat use.
+        </div>
+
+        <div class="phone-row">
+          <div class="phone">
+            <div class="ph-notch"></div>
+            <div class="ph-screen">
+              <div class="ph-topbar">
+                <span>&#8249; Cards</span>
+                <span>Virtual Card</span>
+              </div>
+              <div class="ph-card">
+                <span class="ph-cl">Single-use &middot; Self-destructs on use</span>
+                <span class="ph-cn">4532 &#9608;&#9608;&#9608;&#9608; &#9608;&#9608;&#9608;&#9608; &#9608;&#9608;&#9608;&#9608;</span>
+                <div class="ph-cb">
+                  <span class="cl">EXP &#9608;&#9608;/&#9608;&#9608;</span>
+                  <span class="cr">REVOLUT</span>
+                </div>
+              </div>
+              <div class="ph-st">
+                <div class="ph-dot"></div>
+                <div class="ph-stxt">Used &middot; Number destroyed &middot; &#10003;</div>
+              </div>
+              <div class="ph-stats">
+                <div class="ph-stat"><span class="ph-sv">14</span><span class="ph-sl">Used</span></div>
+                <div class="ph-stat"><span class="ph-sv">0</span><span class="ph-sl">Stored</span></div>
+              </div>
+              <div class="ph-cta">Create new single-use card</div>
+            </div>
+          </div>
+
+          <div class="ph-notes">
+            <div class="copy-strip">
+              <p>&ldquo;That card number is already gone. Nothing to steal, nothing to trace.&rdquo;</p>
+              <span>Post-transaction push notification</span>
+            </div>
+            <div class="copy-strip green">
+              <p>&ldquo;You destroyed 14 card numbers this month. 14 that fraudsters found nothing.&rdquo;</p>
+              <span>Monthly CRM &mdash; natural hook to upgrade plan</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mock-card">
+        <div class="mock-tag ooh">Mock 02 &middot; Out-of-the-Box Activation</div>
+        <div class="mock-head">The Redacted Receipt: breach-reactive OOH</div>
+        <div class="mock-body">
+          Within 24 hours of any major data breach, Revolut&rsquo;s digital OOH in London, Berlin, Paris, and Warsaw updates to &ldquo;Redacted Receipt&rdquo; creative: posters styled as classified documents with card numbers blacked out. <strong>One QR code. Straight to card creation.</strong>
+          <br><br>
+          In Shoreditch and Mitte, ambassadors hand out physical &ldquo;redacted receipts.&rdquo; Back copy: <em>&ldquo;This is what your receipt would look like if you&rsquo;d used a Revolut single-use card.&rdquo;</em>
+        </div>
+
+        <div class="billboard">
+          <div class="bb-top">Classified &middot; Customer data &middot; [REDACTED] &middot; Breach confirmed</div>
+          <div class="bb-main">&#9608;&#9608;&#9608;&#9608; &#9608;&#9608;&#9608;&#9608;<br><em>GONE</em><br>BEFORE<br>THEY LOOKED.</div>
+          <div class="bb-sub">Revolut Virtual Single-Use Cards &middot; Create one now &nearr;</div>
+        </div>
+
+        <div class="phase-grid">
+          <div class="pm-item">
+            <div class="pm-n">01</div>
+            <div class="pm-t">Trigger</div>
+            <div class="pm-b">Breach reported. DOOH updates within 24 hours. No new production needed per incident.</div>
+          </div>
+          <div class="pm-item">
+            <div class="pm-n">02</div>
+            <div class="pm-t">Street stunt</div>
+            <div class="pm-b">Physical &ldquo;redacted receipts&rdquo; in key cities. QR code on the reverse opens directly to card creation.</div>
+          </div>
+          <div class="pm-item">
+            <div class="pm-n">03</div>
+            <div class="pm-t">Digital layer</div>
+            <div class="pm-b">A web tool: enter any brand you&rsquo;ve shopped with, see if they were breached, create a card immediately.</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SIGNATURE -->
+<div class="wrap">
+  <div class="sig">
+    <div>
+      <div class="sig-name">Bhanu <span>Kumar</span></div>
+      <div class="sig-details">
+        <a href="mailto:bhanukumar0902@gmail.com">bhanukumar0902@gmail.com</a><br>
+        <a href="https://linkedin.com/in/bhanuexcalibur" target="_blank" rel="noopener">linkedin.com/in/bhanuexcalibur</a>
+      </div>
+    </div>
+    <a class="sig-btn" href="mailto:bhanukumar0902@gmail.com">
+      Get in touch
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M8 4l3 3-3 3" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </div>
+</div>
+
+</body>
+</html>
